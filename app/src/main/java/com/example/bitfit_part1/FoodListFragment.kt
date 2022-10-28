@@ -20,6 +20,8 @@ import kotlinx.coroutines.launch
  * Use the [FoodListFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+
 class FoodListFragment : Fragment() {
     private val food = mutableListOf<FoodEntity>()
     private lateinit var foodRecyclerView: RecyclerView
@@ -39,13 +41,14 @@ class FoodListFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.food_fragment_list, container, false)
         val layoutManager = LinearLayoutManager(context)
+        foodRecyclerView = view.findViewById(R.id.foodRecyclerView)
         foodRecyclerView.setHasFixedSize(true)
         //set adapter with a food array
         foodAdapter = FoodAdapter(view.context, food)
         //set recycler view to adapter
 
 
-        lifecycleScope.launch(IO) {
+        lifecycleScope.launch {
             /**Get food from database, map to food entity list, clear the data base, add all entries to adapter
             update recyclerView**/
             (activity?.application as BitFitApplication).db.foodDao().getAll().collect { databaseList ->
@@ -55,6 +58,7 @@ class FoodListFragment : Fragment() {
                     food.clear()
                     food.addAll(mappedList)
                     foodAdapter.notifyDataSetChanged()
+
                 }
             }
         }
@@ -64,12 +68,6 @@ class FoodListFragment : Fragment() {
         layoutManager.also {
             val dividerItemDecoration = DividerItemDecoration(context, it.orientation)
             foodRecyclerView.addItemDecoration(dividerItemDecoration)
-        }
-
-        /** Set button onclick listener to navigate to AddFood screen*/
-        view.findViewById<Button>(R.id.addFoodButton)?.setOnClickListener{
-            val intent = Intent(context, AddFoodDetailActivity::class.java)
-            startActivity(intent)
         }
         return view
 

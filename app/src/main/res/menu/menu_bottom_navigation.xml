@@ -5,8 +5,7 @@
         android:id="@+id/action_home"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="@string/label_home_button"
-        app:stext_favoriteshowAsAction="ifRoom" />
+        android:title="@string/label_home_button" />
     <item
         android:id="@+id/action_analytics"
         android:enabled="true"

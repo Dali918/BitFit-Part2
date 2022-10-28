@@ -15,6 +15,14 @@ interface FoodDao {
     @Insert
     fun insert(food: FoodEntity)
 
+    @Query("SELECT sum(foodPrice) FROM food_table")
+    fun totalSpent() : String
+
+    @Query("SELECT sum(foodCalories) FROM food_table")
+    fun totalCalories() : String
+
+
+
     @Query("DELETE FROM food_table")
     fun deleteAll()
 }
