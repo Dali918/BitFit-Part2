@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Bitfit-Part1</string>
+    <string name="add_button_text">Add Food</string>
+    <!--add_food_detail_xml-->
+    <string name="label_food_name">Food Name</string>
+    <string name="label_food_cals">Food Calories</string>
+    <string name="label_food_price">Food Price</string>
+    <string name="add_food_button">Add</string>
+
+    <string name="hint_food_name">Ex: Apples</string>
+    <string name="hint_food_cals">Ex: 2.49</string>
+    <string name="hint_food_price">Ex: 3.99</string>
+</resources>
